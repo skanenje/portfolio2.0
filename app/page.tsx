@@ -3,6 +3,38 @@
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Code2 } from 'lucide-react';
 
+const FeaturedProject = ({ title, description, tech, github }: {
+  title: string;
+  description: string;
+  tech: string[];
+  github?: string;
+}) => (
+  <div className="rounded-lg border border-slate-700/50 p-6 hover:border-slate-700 transition">
+    <h3 className="text-lg font-semibold text-slate-200 mb-2">{title}</h3>
+    <p className="text-slate-400 mb-4">{description}</p>
+    <div className="flex flex-wrap gap-2 mb-4">
+      {tech.map((t) => (
+        <span key={t} className="text-xs bg-slate-800 text-slate-300 rounded px-2 py-1">
+          {t}
+        </span>
+      ))}
+    </div>
+    {github && (
+      <a 
+        href={github}
+        className="inline-flex items-center text-sm font-medium text-slate-400 hover:text-teal-300"
+        target="_blank"
+        rel="noreferrer"
+      >
+        View on GitHub
+        <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    )}
+  </div>
+);
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState('about');
 
@@ -77,6 +109,16 @@ export default function Home() {
                       </span>
                     </a>
                   </li>
+                  <li>
+                    <a className={`group flex items-center py-3 ${
+                      activeSection === 'contact' ? 'active' : ''
+                    }`} href="#contact">
+                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none" />
+                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">
+                        Contact
+                      </span>
+                    </a>
+                  </li>
                 </ul>
               </nav>
             </div>
@@ -111,16 +153,13 @@ export default function Home() {
               </div>
               <div>
                 <p className="mb-4">
-                  My name is Swabri Musa, a Golang developer based in Kisumu, Kenya. I began my tech journey with a foundation in Electrical Engineering, earning a Higher National Diploma in Electrical and Electronics Engineering from DeKUT. My transition into software development came in 2024 when I joined Zone01 Kisumu, an opportunity that immersed me in a rigorous, peer-driven learning environment. Since then, I've been refining my coding skills in Go, JavaScript, Rust, C, and C++, while also exploring Python and machine learning.
-                </p>
-                <p className="mb-4">
-                  I thrive in problem-solving and first-principles thinking, preferring to break down concepts to their core before applying them. My journey at Zone01 has exposed me to diverse projects, from building efficient algorithms in Go to crafting interactive web applications with JavaScript. Recently, I became an active member of the Kisumu Gophers community at LakeHub and attended GopherCon Africa, an experience that deepened my passion for Go and backend development.
-                </p>
-                <p className="mb-4">
-                  My interests go beyond coding—I am passionate about computational geometry, image processing, and ray tracing, constantly looking for ways to merge my technical expertise with creative problem-solving. I enjoy tackling challenging problems, often obsessing over solutions until I find an optimal approach. Whether it's optimizing an algorithm or debugging intricate logic, I find joy in the process of refining and improving code.
-                </p>
-                <p>
-                  When I'm not coding, you can find me hiking the hills, or watching science talks on the RI YouTube channel or engaging in discussions about technology, physics, and mathematics. My curiosity drives me to explore new ideas, always seeking to expand my knowledge and refine my craft.
+                  I'm a Golang developer with a background in Electrical Engineering, focused on building robust, scalable backend systems. My interests span distributed systems, DevOps practices, and low-level programming, driven by a desire to understand how things work from first principles.
+
+                  Currently, I'm developing my expertise in Go while exploring the ecosystem of modern software infrastructure. I'm particularly interested in container orchestration with Kubernetes, infrastructure automation using Terraform and Ansible, and building event-driven architectures with Kafka. My engineering background has instilled in me a methodical approach to problem-solving, which I apply to creating maintainable and efficient software solutions.
+
+                  Beyond backend development, I'm fascinated by computational mathematics and machine learning. I enjoy experimenting with TensorFlow and PyTorch, implementing classical ML algorithms, and exploring their applications in real-world scenarios. This intersection of mathematics and programming challenges me to think critically about problem-solving approaches.
+
+                  When I'm not coding, you'll find me diving into technical documentation, experimenting with IoT devices, or exploring the latest developments in distributed systems and cloud architecture. I believe in continuous learning and am always excited to tackle new technical challenges that push my understanding of fundamental computing concepts.
                 </p>
               </div>
             </section>
@@ -232,6 +271,75 @@ export default function Home() {
                     </div>
                   </li>
                 </ul>
+              </div>
+            </section>
+
+            {/* Featured Projects Section */}
+            <section className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36" id="projects">
+              <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 mb-6">Featured Projects</h2>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <FeaturedProject
+                  title="Jam-Text"
+                  description="A high-performance text indexer using SimHash fingerprints for text similarity search and content finding. Features parallel processing, LSH support, and efficient chunk processing."
+                  tech={["Go", "SimHash", "LSH", "Parallel Processing"]}
+                  github="https://github.com/yourusername/jam-text"
+                />
+                <FeaturedProject
+                  title="System Monitor"
+                  description="A comprehensive system monitoring application providing real-time insights into system resources, processes, and network statistics with an ImGui-based interface."
+                  tech={["C++", "ImGui", "OpenGL", "SDL2"]}
+                  github="https://github.com/yourusername/system-monitor"
+                />
+              </div>
+            </section>
+
+            {/* Contact Section */}
+            <section id="contact" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36">
+              <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Contact</h2>
+              </div>
+              
+              <div className="rounded-lg border border-slate-700/50 p-6 hover:border-slate-700 transition">
+                <h3 className="text-lg font-semibold text-slate-200 mb-6">
+                  Wish to Collaborate? Feel free to get in touch 😉...
+                </h3>
+                
+                <div className="flex flex-col space-y-6">
+                  <a 
+                    href="https://github.com/skanenje" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-slate-400 hover:text-teal-300 transition"
+                  >
+                    <Github className="w-6 h-6 mr-3" />
+                    github.com/skanenje
+                  </a>
+                  <a 
+                    href="mailto:swapomuse@gmail.com"
+                    className="flex items-center text-slate-400 hover:text-teal-300 transition"
+                  >
+                    <Mail className="w-6 h-6 mr-3" />
+                    swapomuse@gmail.com
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/swabri-musa-565350291/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-slate-400 hover:text-teal-300 transition"
+                  >
+                    <Linkedin className="w-6 h-6 mr-3" />
+                    linkedin.com/in/swabri-musa
+                  </a>
+                  <a 
+                    href="https://dev.to/skanenje" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-slate-400 hover:text-teal-300 transition"
+                  >
+                    <Code2 className="w-6 h-6 mr-3" />
+                    dev.to/skanenje
+                  </a>
+                </div>
               </div>
             </section>
 
