@@ -75,7 +75,7 @@ export default function Home() {
                 Golang Developer
               </h2>
               <p className="mt-4 max-w-xs leading-normal">
-                I build robust, scalable applications with Go and modern technologies.
+                I build robust, scalable applications with Go, JavaScript and modern technologies.
               </p>
               <nav className="nav hidden lg:block" aria-label="In-page jump links">
                 <ul className="mt-16 w-max">
