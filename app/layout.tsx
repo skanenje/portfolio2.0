@@ -5,8 +5,36 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Your Name - Full Stack Developer',
+  title: 'Swabri Musa - Full Stack Developer',
   description: 'Full Stack Developer specializing in Go, JavaScript, Python, and modern web frameworks',
+  icons: {
+    icon: [
+      {
+        url: '/portfolio-svgrepo-com.svg',
+        type: 'image/svg+xml',
+      },
+      {
+        url: '/favicon.ico',
+        sizes: '32x32',
+        type: 'image/x-icon',
+      },
+      {
+        url: '/icon-192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        url: '/icon-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+    ],
+    apple: {
+      url: '/apple-icon.png',
+      sizes: '180x180',
+      type: 'image/png',
+    },
+  },
 };
 
 export default function RootLayout({

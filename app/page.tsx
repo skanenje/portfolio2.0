@@ -124,21 +124,27 @@ export default function Home() {
             </div>
             <ul className="ml-1 mt-8 flex items-center" aria-label="Social media">
               <li className="mr-5 text-xs">
-                <a className="block hover:text-slate-200" href="https://github.com/yourusername" target="_blank" rel="noreferrer">
+                <a className="block hover:text-slate-200" href="https://github.com/skanenje" target="_blank" rel="noreferrer">
                   <span className="sr-only">GitHub</span>
                   <Github className="h-6 w-6" />
                 </a>
               </li>
               <li className="mr-5 text-xs">
-                <a className="block hover:text-slate-200" href="https://linkedin.com/in/yourusername" target="_blank" rel="noreferrer">
+                <a className="block hover:text-slate-200" href="https://www.linkedin.com/in/swabri-musa-565350291/" target="_blank" rel="noreferrer">
                   <span className="sr-only">LinkedIn</span>
                   <Linkedin className="h-6 w-6" />
                 </a>
               </li>
               <li className="mr-5 text-xs">
-                <a className="block hover:text-slate-200" href="mailto:your.email@example.com">
+                <a className="block hover:text-slate-200" href="mailto:swapomuse@gmail.com">
                   <span className="sr-only">Mail</span>
                   <Mail className="h-6 w-6" />
+                </a>
+              </li>
+              <li className="mr-5 text-xs">
+                <a className="block hover:text-slate-200" href="https://dev.to/skanenje" target="_blank" rel="noreferrer">
+                  <span className="sr-only">Dev.to</span>
+                  <Code2 className="h-6 w-6" />
                 </a>
               </li>
             </ul>
@@ -234,18 +240,19 @@ export default function Home() {
                       <div className="z-10 sm:order-2 sm:col-span-6">
                         <h3>
                           <a className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" 
-                             href="https://github.com/yourusername/project-name" 
+                             href="https://github.com/skanenje/Jam-text" 
                              target="_blank" 
                              rel="noreferrer">
                             <span>
-                              Project Name
+                              Jam-Text: High-Performance Text Indexer
                               <ExternalLink className="ml-1 h-4 w-4 inline-block" />
                             </span>
                           </a>
                         </h3>
                         <p className="mt-2 text-sm leading-normal">
-                          A description of your project goes here. Highlight the key features, technologies used,
-                          and the problems it solves.
+                          Led a 5-person hackathon team to build a fast, scalable text indexer in Go. Implemented SimHash fingerprinting, 
+                          LSH (Locality-Sensitive Hashing), and vector similarity with random hyperplanes. Features parallel processing 
+                          for chunk handling, efficient in-memory indexing, and fuzzy matching capabilities.
                         </p>
                         <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
                           <li className="mr-1.5 mt-2">
@@ -255,17 +262,27 @@ export default function Home() {
                           </li>
                           <li className="mr-1.5 mt-2">
                             <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              JavaScript
+                              SimHash
                             </div>
                           </li>
                           <li className="mr-1.5 mt-2">
                             <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              PostgreSQL
+                              LSH
+                            </div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                              Algorithms
+                            </div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                              Parallel Processing
                             </div>
                           </li>
                         </ul>
                       </div>
-                      <div className="z-10 sm:order-1 sm:col-span-2">
+                      <div className="z-10 flex items-center sm:order-1 sm:col-span-2">
                         <Code2 className="h-16 w-16 text-slate-200" />
                       </div>
                     </div>
@@ -275,21 +292,128 @@ export default function Home() {
             </section>
 
             {/* Featured Projects Section */}
-            <section className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36" id="projects">
-              <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 mb-6">Featured Projects</h2>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <FeaturedProject
-                  title="Jam-Text"
-                  description="A high-performance text indexer using SimHash fingerprints for text similarity search and content finding. Features parallel processing, LSH support, and efficient chunk processing."
-                  tech={["Go", "SimHash", "LSH", "Parallel Processing"]}
-                  github="https://github.com/yourusername/jam-text"
-                />
-                <FeaturedProject
-                  title="System Monitor"
-                  description="A comprehensive system monitoring application providing real-time insights into system resources, processes, and network statistics with an ImGui-based interface."
-                  tech={["C++", "ImGui", "OpenGL", "SDL2"]}
-                  github="https://github.com/yourusername/system-monitor"
-                />
+            <section id="featured-projects" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+              <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Featured Projects</h2>
+              </div>
+              <div>
+                <ul className="group/list">
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <a href="https://github.com/skanenje/Jam-Text" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                            Jam-Text Hackathon
+                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                          </a>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal">A high-performance text indexer built during a hackathon with a team of 5. Features SimHash fingerprinting, LSH (Locality-Sensitive Hashing), vector similarity with random hyperplanes, and parallel processing.</p>
+                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Go</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">SimHash</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">LSH</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Parallel Processing</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <a href="https://github.com/skanenje/my-ls" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                            my-ls Command
+                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                          </a>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal">A custom implementation of the Unix ls command in Go, featuring comprehensive file listing capabilities with support for multiple flags (-l, -R, -a, -r, -t). Implements recursive directory traversal and detailed file information display.</p>
+                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Go</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Unix Systems</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">File I/O</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">System Programming</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <a href="https://github.com/skanenje/atm-management_C" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                            ATM Management System
+                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                          </a>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal">A comprehensive C-based ATM system with user authentication, account management, and transaction processing. Features multiple account types, interest calculation, and secure data storage.</p>
+                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">C</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">File I/O</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Data Structures</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">System Design</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <a href="https://github.com/skanenje/system-monitor" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                            System Monitor
+                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                          </a>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal">A comprehensive system monitoring application providing real-time insights into system resources, processes, and network statistics with an ImGui-based interface.</p>
+                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">C++</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">ImGui</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">OpenGL</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">SDL2</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </section>
 
@@ -355,8 +479,8 @@ export default function Home() {
                   Tailwind CSS
                 </a>
                 . Deployed on{' '}
-                <a href="https://vercel.com" className="font-medium text-slate-400 hover:text-teal-300" target="_blank" rel="noreferrer">
-                  Vercel
+                <a href="https://aws.amazon.com" className="font-medium text-slate-400 hover:text-teal-300" target="_blank" rel="noreferrer">
+                  AWS
                 </a>
                 .
               </p>
