@@ -7,6 +7,20 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Swabri Musa - Full Stack Developer',
   description: 'Full Stack Developer specializing in Go, JavaScript, Python, and modern web frameworks',
+  openGraph: {
+    title: 'Swabri Musa - Full Stack Developer',
+    description: 'Full Stack Developer specializing in Go, JavaScript, Python, and modern web frameworks',
+    url: 'https://folio.work.gd/',
+    type: 'website',
+    images: [
+      {
+        url: '/preview-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Swabri Musa Portfolio Preview',
+      },
+    ],
+  },
   icons: {
     icon: [
       {
