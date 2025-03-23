@@ -147,6 +147,18 @@ export default function Home() {
                   <Code2 className="h-6 w-6" />
                 </a>
               </li>
+              <li className="mr-5 text-xs">
+                <a 
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-200 bg-slate-800 rounded-md hover:bg-slate-700 transition-colors" 
+                  href="/Swabri_Kanenje_CV.pdf" 
+                  download
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Download CV
+                </a>
+              </li>
             </ul>
           </header>
 
