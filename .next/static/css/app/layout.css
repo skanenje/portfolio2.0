@@ -884,11 +884,17 @@ video {
 .h-4 {
   height: 1rem;
 }
+.h-48 {
+  height: 12rem;
+}
 .h-5 {
   height: 1.25rem;
 }
 .h-6 {
   height: 1.5rem;
+}
+.h-64 {
+  height: 16rem;
 }
 .h-7 {
   height: 1.75rem;
@@ -943,6 +949,9 @@ video {
 }
 .w-11 {
   width: 2.75rem;
+}
+.w-12 {
+  width: 3rem;
 }
 .w-16 {
   width: 4rem;
@@ -1090,6 +1099,15 @@ video {
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+@keyframes spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
 .cursor-default {
   cursor: default;
 }
@@ -1151,6 +1169,9 @@ video {
 }
 .gap-4 {
   gap: 1rem;
+}
+.gap-8 {
+  gap: 2rem;
 }
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -1252,6 +1273,9 @@ video {
 .border-b {
   border-bottom-width: 1px;
 }
+.border-b-2 {
+  border-bottom-width: 2px;
+}
 .border-l {
   border-left-width: 1px;
 }
@@ -1260,6 +1284,9 @@ video {
 }
 .border-t {
   border-top-width: 1px;
+}
+.border-t-2 {
+  border-top-width: 2px;
 }
 .border-dashed {
   border-style: dashed;
@@ -1284,6 +1311,10 @@ video {
 }
 .border-slate-700\/50 {
   border-color: rgb(51 65 85 / 0.5);
+}
+.border-teal-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(94 234 212 / var(--tw-border-opacity));
 }
 .border-transparent {
   border-color: transparent;
@@ -1356,6 +1387,10 @@ video {
 }
 .fill-current {
   fill: currentColor;
+}
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .p-0 {
   padding: 0px;
