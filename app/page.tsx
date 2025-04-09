@@ -179,13 +179,13 @@ export default function Home() {
               </div>
               <div>
                 <p className="mb-4">
-                  I'm a Golang developer with a background in Electrical Engineering, focused on building robust, scalable backend systems. My interests span distributed systems, DevOps practices, and low-level programming, driven by a desire to understand how things work from first principles.
+                  I'm an emerging Golang developer focused on building robust, scalable systems. My expertise spans developing high-performance backend services in Go, crafting responsive frontends with React and TypeScript, and exploring the cutting edge of web technology through WebAssembly with Rust. This unique combination allows me to create full-stack applications that leverage the best of each technology: Go's concurrency and performance, JavaScript's ecosystem and flexibility, and Rust's safety and speed when compiled to WebAssembly. My additional experience with C/C++ has deepened my understanding of memory management, system architecture, and low-level programming concepts.
 
-                  Currently, I'm developing my expertise in Go while exploring the ecosystem of modern software infrastructure. I'm particularly interested in container orchestration with Kubernetes, infrastructure automation using Terraform and Ansible, and building event-driven architectures with Kafka. My engineering background has instilled in me a methodical approach to problem-solving, which I apply to creating maintainable and efficient software solutions.
 
-                  Beyond backend development, I'm fascinated by computational mathematics and machine learning. I enjoy experimenting with TensorFlow and PyTorch, implementing classical ML algorithms, and exploring their applications in real-world scenarios. This intersection of mathematics and programming challenges me to think critically about problem-solving approaches.
+                  Currently, I'm immersed in the DevOps ecosystem, working with containerization through Docker and orchestration with Kubernetes (Minikube). I deploy and manage applications on AWS, utilizing services like EC2 for hosting, Lambda for serverless functions, and S3 for storage solutions. I'm particularly passionate about automation and workflow optimization, implementing CI/CD pipelines and integrating tools like n8n and Gumloop to streamline development processes. This infrastructure-focused approach, combined with structured project management through Airtable, enables me to build and maintain scalable, efficient systems while ensuring consistent delivery and quality.
 
-                  When I'm not coding, you'll find me diving into technical documentation, experimenting with IoT devices, or exploring the latest developments in distributed systems and cloud architecture. I believe in continuous learning and am always excited to tackle new technical challenges that push my understanding of fundamental computing concepts.
+
+                  My Electrical Engineering background brings a methodical approach to problem-solving, particularly valuable when working with systems architecture and hardware-software interactions. When not coding, I solve challenges on Rosetta Code and CodeWars, and enjoy hiking and swimming.
                 </p>
               </div>
             </section>
