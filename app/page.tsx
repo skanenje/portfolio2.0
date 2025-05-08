@@ -171,13 +171,15 @@ export default function Home() {
               </div>
               <div>
                 <p className="mb-4">
-                  I'm a Golang developer with a background in Electrical Engineering, focused on building robust, scalable backend systems. My interests span distributed systems, DevOps practices, and low-level programming, driven by a desire to understand how things work from first principles.
+                I'm a backend-oriented Golang developer with a strong focus on building robust, scalable, and maintainable systems. I specialize in Go for backend services and JavaScript for developing responsive, modern web applications—giving me a full-stack perspective that enables seamless integration between frontend experiences and backend infrastructure.
 
-                  Currently, I'm developing my expertise in Go while exploring the ecosystem of modern software infrastructure. I'm particularly interested in container orchestration with Kubernetes, infrastructure automation using Terraform and Ansible, and building event-driven architectures with Kafka. My engineering background has instilled in me a methodical approach to problem-solving, which I apply to creating maintainable and efficient software solutions.
+My work is grounded in a deep curiosity about how systems operate at all levels, which drives my interest in distributed systems, cloud infrastructure, and low-level programming. I actively explore tools and technologies that empower reliable software delivery at scale, including container orchestration with Kubernetes and infrastructure-as-code using Terraform and Ansible. These technologies help me automate deployments, manage complex environments, and ensure operational resilience.
 
-                  Beyond backend development, I'm fascinated by computational mathematics and machine learning. I enjoy experimenting with TensorFlow and PyTorch, implementing classical ML algorithms, and exploring their applications in real-world scenarios. This intersection of mathematics and programming challenges me to think critically about problem-solving approaches.
+I approach software development methodically, guided by first principles and a desire to deeply understand the internals of the systems I build. This mindset translates into clean architecture, careful design decisions, and performance-aware implementations that can scale with evolving demands.
 
-                  When I'm not coding, you'll find me diving into technical documentation, experimenting with IoT devices, or exploring the latest developments in distributed systems and cloud architecture. I believe in continuous learning and am always excited to tackle new technical challenges that push my understanding of fundamental computing concepts.
+Beyond traditional backend and infrastructure work, I'm also drawn to the world of computational mathematics and machine learning. I enjoy implementing classical machine learning algorithms and experimenting with frameworks like TensorFlow and PyTorch, as they allow me to explore the intersection of mathematics, data, and software systems.
+
+When I'm not coding, I’m often reading technical documentation, testing new ideas through side projects, or diving into emerging trends in distributed systems and cloud-native architecture. I'm committed to continuous learning and thrive on solving complex technical challenges that stretch my understanding and push me to grow as a developer.
                 </p>
               </div>
             </section>
