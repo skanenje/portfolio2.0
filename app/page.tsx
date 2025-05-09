@@ -179,13 +179,13 @@ export default function Home() {
               </div>
               <div>
                 <p className="mb-4">
-                  I'm an emerging Golang developer focused on building robust, scalable systems. My expertise spans developing high-performance backend services in Go, crafting responsive frontends with React and TypeScript, and exploring the cutting edge of web technology through WebAssembly with Rust. This unique combination allows me to create full-stack applications that leverage the best of each technology: Go's concurrency and performance, JavaScript's ecosystem and flexibility, and Rust's safety and speed when compiled to WebAssembly. My additional experience with C/C++ has deepened my understanding of memory management, system architecture, and low-level programming concepts.
-
-
-                  Currently, I'm immersed in the DevOps ecosystem, working with containerization through Docker and orchestration with Kubernetes (Minikube). I deploy and manage applications on AWS, utilizing services like EC2 for hosting, Lambda for serverless functions, and S3 for storage solutions. I'm particularly passionate about automation and workflow optimization, implementing CI/CD pipelines and integrating tools like n8n and Gumloop to streamline development processes. This infrastructure-focused approach, combined with structured project management through Airtable, enables me to build and maintain scalable, efficient systems while ensuring consistent delivery and quality.
-
-
-                  My Electrical Engineering background brings a methodical approach to problem-solving, particularly valuable when working with systems architecture and hardware-software interactions. When not coding, I solve challenges on Rosetta Code and CodeWars, and enjoy hiking and swimming.
+                As a Golang developer with a passion for the backend, I love diving deep into building systems that are not just robust and scalable, but also a pleasure to maintain. While Go is my go-to for crafting powerful backend services, I also work with JavaScript to create responsive and modern web applications. This dual focus gives me a well-rounded, full-stack perspective, allowing me to ensure that the user-facing frontend and the hardworking backend infrastructure work together seamlessly. 
+                </p>
+                <p className="mb-4">
+                What really gets me excited is understanding how systems tick, from the highest level down to the nitty-gritty details. This curiosity fuels my interest in distributed systems, cloud infrastructure, and even the intricacies of low-level programming. I'm always on the lookout for tools and technologies that help deliver reliable software at scale. That's why I've embraced container orchestration with Kubernetes and infrastructure-as-code tools like Terraform and Ansible. These aren't just buzzwords to me; they're practical ways to automate deployments, manage complex environments, and build in the kind of resilience that keeps things running smoothly. 
+                </p>
+                <p className="mb-4">
+                My approach to software development is thoughtful and methodical. I believe in building from first principles and truly understanding the inner workings of the systems I create. This philosophy translates into clean architecture, careful design choices, and performance-conscious implementations that are ready to grow and adapt as new challenges arise.   
                 </p>
               </div>
             </section>
