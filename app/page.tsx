@@ -177,17 +177,18 @@ export default function Home() {
               <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12">
                 <h2 className="text-xl font-bold tracking-tight text-slate-200">About</h2>
               </div>
-              <div>
-                <p className="mb-4">
-                As a Golang developer with a passion for the backend, I love diving deep into building systems that are not just robust and scalable, but also a pleasure to maintain. While Go is my go-to for crafting powerful backend services, I also work with JavaScript to create responsive and modern web applications. This dual focus gives me a well-rounded, full-stack perspective, allowing me to ensure that the user-facing frontend and the hardworking backend infrastructure work together seamlessly. 
-                </p>
-                <p className="mb-4">
-                What really gets me excited is understanding how systems tick, from the highest level down to the nitty-gritty details. This curiosity fuels my interest in distributed systems, cloud infrastructure, and even the intricacies of low-level programming. I'm always on the lookout for tools and technologies that help deliver reliable software at scale. That's why I've embraced container orchestration with Kubernetes and infrastructure-as-code tools like Terraform and Ansible. These aren't just buzzwords to me; they're practical ways to automate deployments, manage complex environments, and build in the kind of resilience that keeps things running smoothly. 
-                </p>
-                <p className="mb-4">
-                My approach to software development is thoughtful and methodical. I believe in building from first principles and truly understanding the inner workings of the systems I create. This philosophy translates into clean architecture, careful design choices, and performance-conscious implementations that are ready to grow and adapt as new challenges arise.   
-                </p>
-              </div>
+                <div>
+                  <p className="mb-4">
+                    As a technically inclined aspiring Business Analyst, I’m passionate about understanding how systems work — not just at the code level, but in how they solve real business problems. With a foundation in backend development using Go and JavaScript, I’ve learned to break down complex systems, analyze how different components interact, and ensure both backend services and user-facing applications align with project goals.
+                  </p>
+                  <p className="mb-4">
+                    What drives me is the challenge of gathering and refining requirements, identifying gaps between business needs and technical implementation, and ensuring that solutions are both practical and scalable. My curiosity naturally extends to distributed systems, cloud infrastructure, and system architecture — all critical when analyzing how software systems meet business objectives. I’ve also worked with DevOps tools like Docker and CI/CD pipelines, giving me insight into deployment workflows and operational challenges.
+                  </p>
+                  <p className="mb-4">
+                    I bring a thoughtful, analytical approach to problem-solving. Whether it's clarifying stakeholder requirements, modeling business processes, or collaborating with technical teams, I aim to understand the full picture before proposing solutions. This mindset helps me contribute to projects with a focus on clean design, clear communication, and delivering value where it matters most.
+                  </p>
+                </div>
+
             </section>
 
             {/* Experience Section */}
