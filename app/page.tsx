@@ -177,18 +177,17 @@ export default function Home() {
               <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12">
                 <h2 className="text-xl font-bold tracking-tight text-slate-200">About</h2>
               </div>
-                <div>
-                  <p className="mb-4">
-                    As a technically inclined aspiring Business Analyst, I’m passionate about understanding how systems work — not just at the code level, but in how they solve real business problems. With a foundation in backend development using Go and JavaScript, I’ve learned to break down complex systems, analyze how different components interact, and ensure both backend services and user-facing applications align with project goals.
-                  </p>
-                  <p className="mb-4">
-                    What drives me is the challenge of gathering and refining requirements, identifying gaps between business needs and technical implementation, and ensuring that solutions are both practical and scalable. My curiosity naturally extends to distributed systems, cloud infrastructure, and system architecture — all critical when analyzing how software systems meet business objectives. I’ve also worked with DevOps tools like Docker and CI/CD pipelines, giving me insight into deployment workflows and operational challenges.
-                  </p>
-                  <p className="mb-4">
-                    I bring a thoughtful, analytical approach to problem-solving. Whether it's clarifying stakeholder requirements, modeling business processes, or collaborating with technical teams, I aim to understand the full picture before proposing solutions. This mindset helps me contribute to projects with a focus on clean design, clear communication, and delivering value where it matters most.
-                  </p>
-                </div>
-
+                    <div>
+                      <p className="mb-4">
+                        As a UI/UX enthusiast with a background in frontend and backend development, I’m passionate about designing interfaces that feel intuitive, look polished, and solve real user problems. My experience with JavaScript, HTML, and CSS has taught me how to bring design concepts to life, ensuring that every pixel serves a purpose and enhances usability.
+                      </p>
+                      <p className="mb-4">
+                        What excites me most is the intersection of design and functionality — where user experience meets technical implementation. I enjoy collaborating on wireframes, prototyping interactive components, and conducting usability testing to refine user flows. Whether it’s simplifying a complex workflow or improving visual hierarchy, I strive to design experiences that are both user-friendly and technically feasible.
+                      </p>
+                      <p className="mb-4">
+                        My approach to design is grounded in empathy, research, and iteration. I believe great design starts with understanding the user’s needs and context, then crafting solutions through careful analysis and creative problem-solving. This mindset allows me to contribute meaningfully to projects by balancing aesthetics, usability, and performance.
+                      </p>
+                    </div>
             </section>
 
             {/* Experience Section */}
