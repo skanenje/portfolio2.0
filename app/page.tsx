@@ -178,15 +178,15 @@ export default function Home() {
                 <h2 className="text-xl font-bold tracking-tight text-slate-200">About</h2>
               </div>
                     <div>
-                      <p className="mb-4">
-                        As a UI/UX enthusiast with a background in frontend and backend development, I’m passionate about designing interfaces that feel intuitive, look polished, and solve real user problems. My experience with JavaScript, HTML, and CSS has taught me how to bring design concepts to life, ensuring that every pixel serves a purpose and enhances usability.
-                      </p>
-                      <p className="mb-4">
-                        What excites me most is the intersection of design and functionality — where user experience meets technical implementation. I enjoy collaborating on wireframes, prototyping interactive components, and conducting usability testing to refine user flows. Whether it’s simplifying a complex workflow or improving visual hierarchy, I strive to design experiences that are both user-friendly and technically feasible.
-                      </p>
-                      <p className="mb-4">
-                        My approach to design is grounded in empathy, research, and iteration. I believe great design starts with understanding the user’s needs and context, then crafting solutions through careful analysis and creative problem-solving. This mindset allows me to contribute meaningfully to projects by balancing aesthetics, usability, and performance.
-                      </p>
+                    <p className="mb-4">
+                      I’m a frontend-focused engineer experienced with Svelte, Next.js, and React. I love turning ideas into fast, accessible, and maintainable interfaces—using modern JavaScript, semantic HTML, and utility-first CSS to ship polished UI that feels effortless to use and easy to extend.
+                    </p>
+                    <p className="mb-4">
+                      My sweet spot is where UX meets implementation: building reusable components, designing clean state flows, and choosing the right rendering strategy (SSR/SSG/ISR) to balance speed and SEO. I’m comfortable translating Figma into production-ready code, wiring data with REST/GraphQL, and refining interactions through thoughtful micro-animations and apply best practices.
+                    </p>
+                    <p className="mb-4">
+                      I work iteratively—prototype, test, measure, improve. Whether it’s optimizing bundle size, improving Core Web Vitals, or simplifying a complex flow, I aim for clarity, performance, and long-term maintainability. Recent work includes Svelte component libraries, Next.js apps with API routes and middleware, and React projects with TypeScript, testing, and clean architecture.
+                    </p>
                     </div>
             </section>
 
