@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code2 } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code2, Phone } from 'lucide-react';
 
 const FeaturedProject = ({ title, description, tech, github }: {
   title: string;
@@ -451,8 +451,8 @@ export default function Home() {
                 </h3>
                 
                 <div className="flex flex-col space-y-6">
-                  <a 
-                    href="https://github.com/skanenje" 
+                  <a
+                    href="https://github.com/skanenje"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-slate-400 hover:text-teal-300 transition"
@@ -460,15 +460,15 @@ export default function Home() {
                     <Github className="w-6 h-6 mr-3" />
                     github.com/skanenje
                   </a>
-                  <a 
+                  <a
                     href="mailto:swapomuse@gmail.com"
                     className="flex items-center text-slate-400 hover:text-teal-300 transition"
                   >
                     <Mail className="w-6 h-6 mr-3" />
                     swapomuse@gmail.com
                   </a>
-                  <a 
-                    href="https://www.linkedin.com/in/swabri-musa-565350291/" 
+                  <a
+                    href="https://www.linkedin.com/in/swabri-musa-565350291/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-slate-400 hover:text-teal-300 transition"
@@ -476,14 +476,21 @@ export default function Home() {
                     <Linkedin className="w-6 h-6 mr-3" />
                     linkedin.com/in/swabri-musa
                   </a>
-                  <a 
-                    href="https://dev.to/skanenje" 
+                  <a
+                    href="https://dev.to/skanenje"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-slate-400 hover:text-teal-300 transition"
                   >
                     <Code2 className="w-6 h-6 mr-3" />
                     dev.to/skanenje
+                  </a>
+                  <a
+                    href="tel:+254723975141"
+                    className="flex items-center text-slate-400 hover:text-teal-300 transition"
+                  >
+                    <Phone className="w-6 h-6 mr-3" />
+                    +254723975141
                   </a>
                 </div>
               </div>
