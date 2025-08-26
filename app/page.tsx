@@ -179,14 +179,16 @@ export default function Home() {
               </div>
                     <div>
                     <p className="mb-4">
-                      I’m a frontend-focused engineer experienced with Svelte, Next.js, and React. I love turning ideas into fast, accessible, and maintainable interfaces—using modern JavaScript, semantic HTML, and utility-first CSS to ship polished UI that feels effortless to use and easy to extend.
-                    </p>
-                    <p className="mb-4">
-                      My sweet spot is where UX meets implementation: building reusable components, designing clean state flows, and choosing the right rendering strategy (SSR/SSG/ISR) to balance speed and SEO. I’m comfortable translating Figma into production-ready code, wiring data with REST/GraphQL, and refining interactions through thoughtful micro-animations and apply best practices.
-                    </p>
-                    <p className="mb-4">
-                      I work iteratively—prototype, test, measure, improve. Whether it’s optimizing bundle size, improving Core Web Vitals, or simplifying a complex flow, I aim for clarity, performance, and long-term maintainability. Recent work includes Svelte component libraries, Next.js apps with API routes and middleware, and React projects with TypeScript, testing, and clean architecture.
-                    </p>
+                        I’m a frontend-focused engineer experienced with Svelte, Next.js, and React, now expanding into Web3 with a focus on Celo and mobile-first dApps in React Native. I enjoy turning ideas into fast, accessible, and maintainable interfaces—combining modern JavaScript, semantic HTML, and utility-first CSS to deliver polished UI that feels effortless to use and easy to extend.
+                      </p>
+
+                      <p className="mb-4">
+                        My strength lies where UX meets implementation: building reusable components, designing clean state flows, and wiring data across REST, GraphQL, and Web3 APIs.
+                        </p>
+                      <p className="mb-4">
+                         I work iteratively—prototype, test, measure, improve—while using AI tools to accelerate development, explore solutions, and sharpen decisions. Recent projects range from Svelte component libraries to Next.js apps with middleware, and now, Celo-powered Web3 experiences and React Native mobile apps.
+                      </p>
+
                     </div>
             </section>
 
