@@ -72,7 +72,7 @@ export default function Home() {
                 <a href="/">Swabri Kanenje</a>
               </h1>
               <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
-                Golang Developer
+                Python Developer
               </h2>
               <p className="mt-4 max-w-xs leading-normal">
                 I build/Intregrate Applications with AI/ Agents using Python, Go and modern Frameworks.
@@ -379,7 +379,34 @@ export default function Home() {
                       </div>
                     </div>
                   </li>
-
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <a href="https://github.com/skanenje/catls" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                            catls
+                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                          </a>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal">dump project to terminal or file to give context to ai about project files and structure of the project for quick debugging using ai chatbots like ChatGPT.</p>
+                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Go</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">CLI Tool</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">File I/O</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">AI debigging</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
                   <li className="mb-12">
                     <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                       <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
@@ -432,6 +459,35 @@ export default function Home() {
                           </li>
                           <li className="mr-1.5 mt-2">
                             <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">SDL2</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li className="mb-12">
+                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
+                          <a href="https://github.com/skanenje/prompt-enhancer" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                            Prompt Enhancer
+                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                          </a>
+                        </h3>
+                        <p className="mt-2 text-sm leading-normal">enhance your prompt to get intelligent output from ai chatbots</p>
+                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Python</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">GenAi</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Gemini</div>
+                          </li>
+                          <li className="mr-1.5 mt-2">
+                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Docker</div>
                           </li>
                         </ul>
                       </div>
