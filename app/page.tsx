@@ -75,7 +75,7 @@ export default function Home() {
                 Golang Developer
               </h2>
               <p className="mt-4 max-w-xs leading-normal">
-                I build robust, scalable applications with Go, JavaScript, Rust and modern technologies.
+                I build robust, scalable applications with Python, Go, JavaScript, Rust and modern technologies.
               </p>
               <nav className="nav hidden lg:block" aria-label="In-page jump links">
                 <ul className="mt-16 w-max">
@@ -178,17 +178,19 @@ export default function Home() {
                 <h2 className="text-xl font-bold tracking-tight text-slate-200">About</h2>
               </div>
                     <div>
-                    <p className="mb-4">
-                        I’m a frontend-focused engineer experienced with Svelte, Next.js, and React, now expanding into Web3 with a focus on Celo and mobile-first dApps in React Native. I enjoy turning ideas into fast, accessible, and maintainable interfaces—combining modern JavaScript, semantic HTML, and utility-first CSS to deliver polished UI that feels effortless to use and easy to extend.
-                      </p>
-
-                      <p className="mb-4">
-                        My strength lies where UX meets implementation: building reusable components, designing clean state flows, and wiring data across REST, GraphQL, and Web3 APIs.
+                    <div>
+                        <p className="mb-4">
+                          I’m an AI and Machine Learning engineer focused on building intelligent, agent-driven systems. My work centers on designing Retrieval-Augmented Generation pipelines, model context protocols, and multi-agent architectures capable of reasoning, tool use, and autonomous task execution. I approach AI from first principles—understanding embeddings, indexing, context management, and model constraints to create reliable and extensible systems.
                         </p>
-                      <p className="mb-4">
-                         I work iteratively—prototype, test, measure, improve—while using AI tools to accelerate development, explore solutions, and sharpen decisions. Recent projects range from Svelte component libraries to Next.js apps with middleware, and now, Celo-powered Web3 experiences and React Native mobile apps.
-                      </p>
 
+                        <p className="mb-4">
+                          My engineering background spans Go, Rust, Python, and JavaScript, which helps me bridge classical software design with modern ML workflows. I’m particularly interested in how vector databases, concurrency models, and state synchronization map onto agentic AI patterns such as retrieval, planning, tool execution, and memory systems.
+                        </p>
+
+                        <p className="mb-4">
+                          I work iteratively—prototype, validate, refine—using AI not only as a development accelerator but as a core runtime component. Recent projects include agentic RAG pipelines, on-device LLM experimentation with Ollama, embedded/IoT data processing, and the integration of machine learning with real-world systems across electrical, mechanical, and Web3 domains.
+                        </p>
+                      </div>
                     </div>
             </section>
 
@@ -212,7 +214,7 @@ export default function Home() {
                                href="https://www.zone01kisumu.ke/" 
                                target="_blank" 
                                rel="noreferrer">
-                              <span>Software Developer · Zone01 Kisumu</span>
+                              <span>Machine Learning and AI Developer · Zone01 Kisumu</span>
                               <ExternalLink className="ml-1 h-4 w-4 inline-block" />
                             </a>
                           </div>

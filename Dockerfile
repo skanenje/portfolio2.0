@@ -1,39 +1,33 @@
-# Stage 1: Dependencies
-FROM node:20-alpine AS deps
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
-
-# Stage 2: Builder
+# --- STAGE 1: Build the app ---
 FROM node:20-alpine AS builder
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+
+# Copy package files and install dependencies
+COPY package.json package-lock.json ./
+RUN npm install
+
+# Copy all source code
 COPY . .
+
+# Build the app with standalone output
 RUN npm run build
 
-# Stage 3: Runner
+# --- STAGE 2: Create the production image ---
+# Use a minimal Node.js runtime (smaller base image)
 FROM node:20-alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
-
-# Create a non-root user
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Copy only necessary files
-COPY --from=builder /app/public ./public
+# The build process generates a standalone folder at ./.next/standalone
+# We copy everything from the standalone folder into the root of the runner container
 COPY --from=builder /app/.next/standalone ./
+
+# Copy the public folder and static assets that the standalone server will serve
+COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/static ./.next/static
 
-# Set correct permissions
-RUN chown -R nextjs:nodejs /app
-
-USER nextjs
-
+# Set the host and port
+ENV PORT 3000
 EXPOSE 3000
 
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
-
+# Start the minimal production server
 CMD ["node", "server.js"]
