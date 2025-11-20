@@ -75,7 +75,7 @@ export default function Home() {
                 Golang Developer
               </h2>
               <p className="mt-4 max-w-xs leading-normal">
-                I build robust, scalable applications with Python, Go, JavaScript, Rust and modern technologies.
+                I build/Intregrate Applications with AI/ Agents using Python, Go and modern Frameworks.
               </p>
               <nav className="nav hidden lg:block" aria-label="In-page jump links">
                 <ul className="mt-16 w-max">
