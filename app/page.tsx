@@ -566,8 +566,8 @@ export default function Home() {
                   Tailwind CSS
                 </a>
                 . Deployed on{' '}
-                <a href="https://aws.amazon.com" className="font-medium text-slate-400 hover:text-teal-300" target="_blank" rel="noreferrer">
-                  AWS
+                <a href="https://vercel.com/" className="font-medium text-slate-400 hover:text-teal-300" target="_blank" rel="noreferrer">
+                  VERCEL
                 </a>
                 .
               </p>
