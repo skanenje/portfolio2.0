@@ -188,7 +188,7 @@ export default function Home() {
                         </p>
 
                         <p className="mb-4">
-                          I work iteratively—prototype, validate, refine—using AI not only as a development accelerator but as a research companion. Recent projects include agentic RAG pipelines, mcp's, embedded/IoT data processing, and the integration of machine learning with real-world systems across IoT and Web2 domains.
+                          I work iteratively—prototype, validate, refine—using AI not only as a development accelerator but as a research companion. Recent projects include agentic RAG pipelines, mcp's, embedded/IoT data processing, and the integration of AI with real-world systems across IoT and Web2 domains.
                         </p>
                       </div>
                     </div>
