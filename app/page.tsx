@@ -567,7 +567,7 @@ export default function Home() {
                 </a>
                 . Deployed on{' '}
                 <a href="https://vercel.com/" className="font-medium text-slate-400 hover:text-teal-300" target="_blank" rel="noreferrer">
-                  VERCEL
+                  Vercel
                 </a>
                 .
               </p>
