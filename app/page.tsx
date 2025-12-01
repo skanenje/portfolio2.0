@@ -180,15 +180,15 @@ export default function Home() {
                     <div>
                     <div>
                         <p className="mb-4">
-                          I’m an AI and Machine Learning engineer focused on building intelligent, agent-driven systems. My work centers on designing Retrieval-Augmented Generation pipelines, model context protocols, and multi-agent architectures capable of reasoning, tool use, and autonomous task execution. I approach AI from first principles—understanding embeddings, indexing, context management, and model constraints to create reliable and extensible systems.
+                          I’m an AI and Machine Learning developer focused on building intelligent, agent-driven systems. My work centers on designing Retrieval-Augmented Generation pipelines, model context protocols, and multi-agent architectures capable of reasoning, tool use, and autonomous task execution. I approach AI from first principles—understanding embeddings, indexing, context management, and model constraints to create reliable and extensible systems.
                         </p>
 
                         <p className="mb-4">
-                          My engineering background spans Go, Rust, Python, and JavaScript, which helps me bridge classical software design with modern ML workflows. I’m particularly interested in how vector databases, concurrency models, and state synchronization map onto agentic AI patterns such as retrieval, planning, tool execution, and memory systems.
+                          My programming background spans Go, Python, and JavaScript and Rust which helps me bridge classical software design with modern ML workflows. I’m particularly interested in how vector databases, concurrency models, and state synchronization map onto agentic AI patterns such as retrieval, planning, tool execution, and memory systems.
                         </p>
 
                         <p className="mb-4">
-                          I work iteratively—prototype, validate, refine—using AI not only as a development accelerator but as a research companion. Recent projects include agentic RAG pipelines, mcp's, embedded/IoT data processing, and the integration of AI with real-world systems across IoT and Web2 domains.
+                          I work iteratively—prototype, validate, refine—using AI not only as a development accelerator but as a research companion. Recent projects include agentic RAG pipelines, mcp , embedded/IoT data processing, and the integration of AI with real-world systems across IoT and Web2 domains.
                         </p>
                       </div>
                     </div>
