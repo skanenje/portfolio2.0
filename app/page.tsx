@@ -184,7 +184,7 @@ export default function Home() {
                         </p>
 
                         <p className="mb-4">
-                          My programming background spans Go, Python, JavaScript and Rust which helps me bridge classical software design with modern ML workflows. I’m particularly interested in how to make AI efficient, vector databases, concurrency models, and state synchronization map onto agentic AI patterns such as retrieval, planning, tool execution, and memory systems.
+                          My programming background spans Go, Python, JavaScript and Rust which helps me bridge classical software design with modern ML workflows. I’m particularly interested in how to make AI based systems efficient, vector databases, concurrency models, and state synchronization map onto agentic AI patterns such as retrieval, planning, tool execution, and memory systems.
                         </p>
 
                         <p className="mb-4">
