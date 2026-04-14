@@ -1,15 +1,12 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Swabri Musa - Full Stack Developer',
-  description: 'Full Stack Developer specializing in Go, JavaScript, Python, and modern web frameworks',
+  title: 'Swabri Kanenje — Python Developer & ML Engineer',
+  description: 'Portfolio of Swabri Kanenje — Python Developer specialising in AI, machine learning, RAG pipelines, and backend systems.',
   openGraph: {
-    title: 'Swabri Musa - Full Stack Developer',
-    description: 'Full Stack Developer specializing in Go, JavaScript, Python, and modern web frameworks',
+    title: 'Swabri Kanenje — Python Developer & ML Engineer',
+    description: 'Portfolio of Swabri Kanenje — Python Developer specialising in AI, machine learning, RAG pipelines, and backend systems.',
     url: 'https://folio.work.gd/',
     type: 'website',
     images: [
@@ -17,7 +14,7 @@ export const metadata: Metadata = {
         url: '/preview-image.png',
         width: 1200,
         height: 630,
-        alt: 'Swabri Musa Portfolio Preview',
+        alt: 'Swabri Kanenje Portfolio',
       },
     ],
   },
@@ -26,9 +23,9 @@ export const metadata: Metadata = {
       {
         url: '/portfolio-svgrepo-com.svg',
         type: 'image/svg+xml',
-      }
-    ]
-  }
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -38,9 +35,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-slate-900 leading-relaxed text-slate-400 antialiased selection:bg-teal-300 selection:text-teal-900`}>
-        {children}
-      </body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

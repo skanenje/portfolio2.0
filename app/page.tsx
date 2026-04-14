@@ -1,579 +1,444 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code2, Phone } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Github, Linkedin, Mail, ExternalLink, Code2, Phone, Download } from 'lucide-react';
 
-const FeaturedProject = ({ title, description, tech, github }: {
-  title: string;
-  description: string;
-  tech: string[];
-  github?: string;
-}) => (
-  <div className="rounded-lg border border-slate-700/50 p-6 hover:border-slate-700 transition">
-    <h3 className="text-lg font-semibold text-slate-200 mb-2">{title}</h3>
-    <p className="text-slate-400 mb-4">{description}</p>
-    <div className="flex flex-wrap gap-2 mb-4">
-      {tech.map((t) => (
-        <span key={t} className="text-xs bg-slate-800 text-slate-300 rounded px-2 py-1">
-          {t}
-        </span>
-      ))}
-    </div>
-    {github && (
-      <a 
-        href={github}
-        className="inline-flex items-center text-sm font-medium text-slate-400 hover:text-teal-300"
-        target="_blank"
-        rel="noreferrer"
-      >
-        View on GitHub
-        <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-        </svg>
-      </a>
-    )}
-  </div>
+/* ── Reusable tech tag ─────────────────────────────────────────── */
+const Tag = ({ label }: { label: string }) => (
+  <span className="tag">{label}</span>
+);
+
+/* ── Project / Experience card ─────────────────────────────────── */
+const Card = ({ children }: { children: React.ReactNode }) => (
+  <div className="card">{children}</div>
 );
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('about');
+  const spotlightRef = useRef<HTMLDivElement>(null);
 
+  /* Track cursor for spotlight glow */
+  useEffect(() => {
+    const move = (e: MouseEvent) => {
+      if (spotlightRef.current) {
+        spotlightRef.current.style.setProperty('--x', `${e.clientX}px`);
+        spotlightRef.current.style.setProperty('--y', `${e.clientY}px`);
+      }
+    };
+    window.addEventListener('mousemove', move);
+    return () => window.removeEventListener('mousemove', move);
+  }, []);
+
+  /* Track active section on scroll */
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'experience', 'projects'];
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+      const sections = ['about', 'experience', 'projects', 'contact'];
+      const current = sections.find((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          return rect.top <= 120 && rect.bottom >= 120;
         }
         return false;
       });
-      if (current) {
-        setActiveSection(current);
-      }
+      if (current) setActiveSection(current);
     };
-
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navLinks = [
+    { id: 'about',      label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects',   label: 'Projects' },
+    { id: 'contact',    label: 'Contact' },
+    { id: 'blog',       label: 'Blog', href: '/blog' },
+  ];
+
   return (
-    <div className="group/spotlight relative">
-      <div className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute" 
-           style={{ background: 'radial-gradient(600px circle at 0px 0px, rgba(29, 78, 216, 0.15), transparent 80%)' }} />
-      
-      <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
-        <div className="lg:flex lg:justify-between lg:gap-4">
-          {/* Header / Left Sidebar */}
-          <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
+    <>
+      {/* Cursor spotlight */}
+      <div ref={spotlightRef} className="spotlight" aria-hidden />
+
+      <div className="relative-z mx-auto min-h-screen max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
+        <div className="lg:flex lg:justify-between lg:gap-8">
+
+          {/* ── LEFT SIDEBAR ─────────────────────────────────────── */}
+          <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-5/12 lg:flex-col lg:justify-between lg:py-24">
             <div>
-              <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
-                <a href="/">Swabri Kanenje</a>
-              </h1>
-              <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
-                Python Developer
-              </h2>
-              <p className="mt-4 max-w-xs leading-normal">
-                Machine  learning and Data Scientist.
-              </p>
-              <nav className="nav hidden lg:block" aria-label="In-page jump links">
-                <ul className="mt-16 w-max">
-                  <li>
-                    <a className={`group flex items-center py-3 ${
-                      activeSection === 'about' ? 'active' : ''
-                    }`} href="#about">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none" />
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">
-                        About
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a className={`group flex items-center py-3 ${
-                      activeSection === 'experience' ? 'active' : ''
-                    }`} href="#experience">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none" />
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">
-                        Experience
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a className={`group flex items-center py-3 ${
-                      activeSection === 'projects' ? 'active' : ''
-                    }`} href="#projects">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none" />
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">
-                        Projects
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a className={`group flex items-center py-3 ${
-                      activeSection === 'contact' ? 'active' : ''
-                    }`} href="#contact">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none" />
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">
-                        Contact
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a className="group flex items-center py-3" href="/blog">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none" />
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">
-                        Blog
-                      </span>
-                    </a>
-                  </li>
+              {/* Name + title */}
+              <div className="fade-up">
+                <p className="text-accent text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+                  Portfolio
+                </p>
+                <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.02em' }}>
+                  <a href="/" className="text-primary hover:text-accent transition" style={{ color: 'var(--text-primary)' }}>
+                    Swabri Kanenje
+                  </a>
+                </h1>
+                <h2 className="mt-2 text-lg font-medium" style={{ color: 'var(--accent-light)' }}>
+                  Python Developer &amp; ML Engineer
+                </h2>
+                <p className="mt-4 max-w-xs text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  Machine Learning and Data Scientist building intelligent systems that reason, retrieve, and act.
+                </p>
+              </div>
+
+              {/* Desktop Nav */}
+              <nav className="hidden lg:block mt-14" aria-label="In-page jump links">
+                <ul>
+                  {navLinks.map(({ id, label, href }) => (
+                    <li key={id}>
+                      <a
+                        href={href ?? `#${id}`}
+                        className={`nav-item ${activeSection === id ? 'active' : ''}`}
+                      >
+                        <span className="nav-line" />
+                        <span className="nav-label">{label}</span>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </nav>
             </div>
-            <ul className="ml-1 mt-8 flex items-center" aria-label="Social media">
-              <li className="mr-5 text-xs">
-                <a className="block hover:text-slate-200" href="https://github.com/skanenje" target="_blank" rel="noreferrer">
-                  <span className="sr-only">GitHub</span>
-                  <Github className="h-6 w-6" />
-                </a>
-              </li>
-              <li className="mr-5 text-xs">
-                <a className="block hover:text-slate-200" href="https://www.linkedin.com/in/swabri-musa-565350291/" target="_blank" rel="noreferrer">
-                  <span className="sr-only">LinkedIn</span>
-                  <Linkedin className="h-6 w-6" />
-                </a>
-              </li>
-              <li className="mr-5 text-xs">
-                <a className="block hover:text-slate-200" href="mailto:swapomuse@gmail.com">
-                  <span className="sr-only">Mail</span>
-                  <Mail className="h-6 w-6" />
-                </a>
-              </li>
-              <li className="mr-5 text-xs">
-                <a className="block hover:text-slate-200" href="https://dev.to/skanenje" target="_blank" rel="noreferrer">
-                  <span className="sr-only">Dev.to</span>
-                  <Code2 className="h-6 w-6" />
-                </a>
-              </li>
-              <li className="mr-5 text-xs">
-                <a 
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-200 bg-slate-800 rounded-md hover:bg-slate-700 transition-colors" 
-                  href="/Swabri_Kanenje_CV.pdf" 
-                  download
-                >
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                  Download CV
-                </a>
-              </li>
-            </ul>
+
+            {/* Social + CV */}
+            <div className="mt-10 fade-up-4">
+              <ul className="flex items-center gap-5 flex-wrap">
+                <li>
+                  <a href="https://github.com/skanenje" target="_blank" rel="noreferrer" className="social-icon block" aria-label="GitHub">
+                    <Github className="h-5 w-5" />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/swabri-musa-565350291/" target="_blank" rel="noreferrer" className="social-icon block" aria-label="LinkedIn">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:swapomuse@gmail.com" className="social-icon block" aria-label="Email">
+                    <Mail className="h-5 w-5" />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://dev.to/skanenje" target="_blank" rel="noreferrer" className="social-icon block" aria-label="Dev.to">
+                    <Code2 className="h-5 w-5" />
+                  </a>
+                </li>
+                <li>
+                  <a href="/Swabri_Kanenje_CV.pdf" download className="cv-btn">
+                    <Download className="h-4 w-4" />
+                    Download CV
+                  </a>
+                </li>
+              </ul>
+            </div>
           </header>
 
-          {/* Main Content */}
-          <main id="content" className="pt-24 lg:w-1/2 lg:py-24">
-            {/* About Section */}
-            <section id="about" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
-              <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12">
-                <h2 className="text-xl font-bold tracking-tight text-slate-200">About</h2>
+          {/* ── MAIN CONTENT ─────────────────────────────────────── */}
+          <main id="content" className="pt-24 lg:w-7/12 lg:py-24">
+
+            {/* ── ABOUT ─────────────────────────────────────────── */}
+            <section id="about" className="mb-20 scroll-mt-16 lg:scroll-mt-24">
+              <div className="section-header">
+                <h2 className="section-title">About</h2>
               </div>
-                    <div>
-                    <div>
-                    <p className="mb-4">
-                        I'm a developer with a focus on AI and machine learning, particularly in building
-                        systems that combine language models with structured retrieval, tool use, and
-                        multi-step reasoning. I try to understand what's actually happening under the
-                        hood—how embeddings work, how context windows constrain design, how retrieval
-                        quality affects outputs—rather than treating models as black boxes.
-                      </p>
-                      <p className="mb-4">
-                        My programming background spans Python, Go, JavaScript, and some Rust. This mix
-                        has been useful for connecting ML workflows with backend systems—handling
-                        concurrency, state, and data pipelines in ways that hold up beyond a prototype.
-                      </p>
-                      <p className="mb-4">
-                        I work iteratively: build something small, test it against real inputs, then
-                        refine. Recent projects include RAG pipelines, MCP-based tool integrations,
-                        and connecting AI components to IoT and web systems. I'm still learning a lot,
-                        but I'm deliberate about understanding the tradeoffs in what I build.
-                      </p>
-                      </div>
-                    </div>
+              <div className="space-y-4 text-sm leading-relaxed fade-up-2" style={{ color: 'var(--text-secondary)' }}>
+                <p>
+                  I&apos;m a developer with a focus on AI and machine learning, particularly in building
+                  systems that combine language models with structured retrieval, tool use, and
+                  multi-step reasoning. I try to understand what&apos;s actually happening under the
+                  hood—how embeddings work, how context windows constrain design, how retrieval
+                  quality affects outputs—rather than treating models as black boxes.
+                </p>
+                <p>
+                  My programming background spans Python, Go, JavaScript, and some Rust. This mix
+                  has been useful for connecting ML workflows with backend systems—handling
+                  concurrency, state, and data pipelines in ways that hold up beyond a prototype.
+                </p>
+                <p>
+                  I work iteratively: build something small, test it against real inputs, then
+                  refine. Recent projects include RAG pipelines, MCP-based tool integrations,
+                  and connecting AI components to IoT and web systems. I&apos;m still learning a lot,
+                  but I&apos;m deliberate about understanding the tradeoffs in what I build.
+                </p>
+              </div>
             </section>
 
-            {/* Experience Section */}
-            <section id="experience" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
-              <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12">
-                <h2 className="text-xl font-bold tracking-tight text-slate-200">Experience</h2>
+            {/* ── EXPERIENCE ────────────────────────────────────── */}
+            <section id="experience" className="mb-20 scroll-mt-16 lg:scroll-mt-24">
+              <div className="section-header">
+                <h2 className="section-title">Experience</h2>
               </div>
-              <div>
-                <ol className="group/list">
-                  <li className="mb-12">
-                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                      <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
-                        2024 — Present
-                      </header>
-                      <div className="z-10 sm:col-span-6">
-                        <h3 className="font-medium leading-snug text-slate-200">
-                          <div>
-                            <a className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" 
-                               href="https://www.zone01kisumu.ke/" 
-                               target="_blank" 
-                               rel="noreferrer">
-                              <span>Machine Learning and AI Developer · Zone01 Kisumu</span>
-                              <ExternalLink className="ml-1 h-4 w-4 inline-block" />
-                            </a>
-                          </div>
-                        </h3>
-                        <p className="mt-2 text-sm leading-normal">
-                          Developing efficient algorithms and backend services using Go, participating in peer-driven learning, and contributing to diverse software projects.
+              <ol className="space-y-4">
+                <li>
+                  <Card>
+                    <div className="flex gap-4">
+                      <div className="glow-dot" />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: 'var(--text-muted)' }}>
+                          2024 — Present
                         </p>
-                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              Go
-                            </div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              JavaScript
-                            </div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              Rust
-                            </div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              Python
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ol>
-              </div>
-            </section>
-
-            {/* Projects Section */}
-            <section id="projects" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
-              <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12">
-                <h2 className="text-xl font-bold tracking-tight text-slate-200">Projects</h2>
-              </div>
-              <div>
-                <ul className="group/list">
-                  <li className="mb-12">
-                    <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                      <div className="z-10 sm:order-2 sm:col-span-6">
-                        <h3>
-                          <a className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" 
-                             href="https://github.com/skanenje/Jam-text" 
-                             target="_blank" 
-                             rel="noreferrer">
-                            <span>
-                              Jam-Text: High-Performance Text Indexer
-                              <ExternalLink className="ml-1 h-4 w-4 inline-block" />
-                            </span>
+                        <h3 className="font-semibold text-base mb-1" style={{ color: 'var(--text-primary)' }}>
+                          <a
+                            href="https://www.zone01kisumu.ke/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="accent-link inline-flex items-center gap-1"
+                          >
+                            Machine Learning &amp; AI Developer
+                            <ExternalLink className="h-3.5 w-3.5 inline-block" />
                           </a>
                         </h3>
-                        <p className="mt-2 text-sm leading-normal">
-                          Led a 5-person hackathon team to build a fast, scalable text indexer in Go. Implemented SimHash fingerprinting, 
-                          LSH (Locality-Sensitive Hashing), and vector similarity with random hyperplanes. Features parallel processing 
-                          for chunk handling, efficient in-memory indexing, and fuzzy matching capabilities.
+                        <p className="text-xs mb-1" style={{ color: 'var(--accent-light)' }}>Zone01 Kisumu</p>
+                        <p className="text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
+                          Developing efficient algorithms and backend services using Go, participating in peer-driven
+                          learning, and contributing to diverse software projects.
                         </p>
-                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              Go
-                            </div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              SimHash
-                            </div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              LSH
-                            </div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              Algorithms
-                            </div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                              Parallel Processing
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="z-10 flex items-center sm:order-1 sm:col-span-2">
-                        <Code2 className="h-16 w-16 text-slate-200" />
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {['Go', 'JavaScript', 'Rust', 'Python'].map(t => <Tag key={t} label={t} />)}
+                        </div>
                       </div>
                     </div>
-                  </li>
-                </ul>
-              </div>
+                  </Card>
+                </li>
+              </ol>
             </section>
 
-            {/* Featured Projects Section */}
-            <section id="featured-projects" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
-              <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12">
-                <h2 className="text-xl font-bold tracking-tight text-slate-200">Featured Projects</h2>
+            {/* ── PROJECTS ──────────────────────────────────────── */}
+            <section id="projects" className="mb-20 scroll-mt-16 lg:scroll-mt-24">
+              <div className="section-header">
+                <h2 className="section-title">Projects</h2>
               </div>
-              <div>
-                <ul className="group/list">
-                  <li className="mb-12">
-                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                      <div className="z-10 sm:col-span-6">
-                        <h3 className="font-medium leading-snug text-slate-200">
-                          <a href="https://github.com/skanenje/Jam-Text" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
-                            Jam-Text Hackathon
-                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+              <ul className="space-y-4">
+
+                {/* Jam-Text */}
+                <li>
+                  <Card>
+                    <div className="flex gap-4">
+                      <div className="glow-dot" />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-base" style={{ color: 'var(--text-primary)' }}>
+                          <a
+                            href="https://github.com/skanenje/Jam-text"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="accent-link inline-flex items-center gap-1"
+                          >
+                            Jam-Text: High-Performance Text Indexer
+                            <ExternalLink className="h-3.5 w-3.5" />
                           </a>
                         </h3>
-                        <p className="mt-2 text-sm leading-normal">A high-performance text indexer built during a hackathon with a team of 5. Features SimHash fingerprinting, LSH (Locality-Sensitive Hashing), vector similarity with random hyperplanes, and parallel processing.</p>
-                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Go</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">SimHash</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">LSH</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Parallel Processing</div>
-                          </li>
-                        </ul>
+                        <p className="text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
+                          Led a 5-person hackathon team to build a fast, scalable text indexer in Go. Implemented
+                          SimHash fingerprinting, LSH (Locality-Sensitive Hashing), and vector similarity with random
+                          hyperplanes. Features parallel processing for chunk handling, efficient in-memory indexing,
+                          and fuzzy matching.
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {['Go', 'SimHash', 'LSH', 'Algorithms', 'Parallel Processing'].map(t => <Tag key={t} label={t} />)}
+                        </div>
                       </div>
                     </div>
-                  </li>
+                  </Card>
+                </li>
 
-                  <li className="mb-12">
-                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                      <div className="z-10 sm:col-span-6">
-                        <h3 className="font-medium leading-snug text-slate-200">
-                          <a href="https://github.com/skanenje/my-ls" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                {/* my-ls */}
+                <li>
+                  <Card>
+                    <div className="flex gap-4">
+                      <div className="glow-dot" />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-base" style={{ color: 'var(--text-primary)' }}>
+                          <a
+                            href="https://github.com/skanenje/my-ls"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="accent-link inline-flex items-center gap-1"
+                          >
                             my-ls Command
-                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                            <ExternalLink className="h-3.5 w-3.5" />
                           </a>
                         </h3>
-                        <p className="mt-2 text-sm leading-normal">A custom implementation of the Unix ls command in Go, featuring comprehensive file listing capabilities with support for multiple flags (-l, -R, -a, -r, -t). Implements recursive directory traversal and detailed file information display.</p>
-                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Go</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Unix Systems</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">File I/O</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">System Programming</div>
-                          </li>
-                        </ul>
+                        <p className="text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
+                          A custom implementation of the Unix ls command in Go, featuring comprehensive file listing
+                          with support for multiple flags (-l, -R, -a, -r, -t). Implements recursive directory traversal
+                          and detailed file information display.
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {['Go', 'Unix Systems', 'File I/O', 'System Programming'].map(t => <Tag key={t} label={t} />)}
+                        </div>
                       </div>
                     </div>
-                  </li>
-                  <li className="mb-12">
-                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                      <div className="z-10 sm:col-span-6">
-                        <h3 className="font-medium leading-snug text-slate-200">
-                          <a href="https://github.com/skanenje/catls" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                  </Card>
+                </li>
+
+                {/* catls */}
+                <li>
+                  <Card>
+                    <div className="flex gap-4">
+                      <div className="glow-dot" />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-base" style={{ color: 'var(--text-primary)' }}>
+                          <a
+                            href="https://github.com/skanenje/catls"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="accent-link inline-flex items-center gap-1"
+                          >
                             catls
-                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                            <ExternalLink className="h-3.5 w-3.5" />
                           </a>
                         </h3>
-                        <p className="mt-2 text-sm leading-normal">dump project to terminal or file to give context to ai about project files and structure of the project for quick debugging using ai chatbots like ChatGPT.</p>
-                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Go</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">CLI Tool</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">File I/O</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">AI debugging</div>
-                          </li>
-                        </ul>
+                        <p className="text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
+                          Dump project to terminal or file to give context to AI about project files and structure
+                          for quick debugging using AI chatbots like ChatGPT.
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {['Go', 'CLI Tool', 'File I/O', 'AI debugging'].map(t => <Tag key={t} label={t} />)}
+                        </div>
                       </div>
                     </div>
-                  </li>
-                  <li className="mb-12">
-                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                      <div className="z-10 sm:col-span-6">
-                        <h3 className="font-medium leading-snug text-slate-200">
-                          <a href="https://github.com/skanenje/atm-management_C" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                  </Card>
+                </li>
+
+                {/* ATM Management */}
+                <li>
+                  <Card>
+                    <div className="flex gap-4">
+                      <div className="glow-dot" />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-base" style={{ color: 'var(--text-primary)' }}>
+                          <a
+                            href="https://github.com/skanenje/atm-management_C"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="accent-link inline-flex items-center gap-1"
+                          >
                             ATM Management System
-                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                            <ExternalLink className="h-3.5 w-3.5" />
                           </a>
                         </h3>
-                        <p className="mt-2 text-sm leading-normal">A comprehensive C-based ATM system with user authentication, account management, and transaction processing. Features multiple account types, interest calculation, and secure data storage.</p>
-                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">C</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">File I/O</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Data Structures</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">System Design</div>
-                          </li>
-                        </ul>
+                        <p className="text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
+                          A comprehensive C-based ATM system with user authentication, account management, and
+                          transaction processing. Features multiple account types, interest calculation, and secure
+                          data storage.
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {['C', 'File I/O', 'Data Structures', 'System Design'].map(t => <Tag key={t} label={t} />)}
+                        </div>
                       </div>
                     </div>
-                  </li>
+                  </Card>
+                </li>
 
-                  <li className="mb-12">
-                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                      <div className="z-10 sm:col-span-6">
-                        <h3 className="font-medium leading-snug text-slate-200">
-                          <a href="https://github.com/skanenje/system-monitor" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                {/* System Monitor */}
+                <li>
+                  <Card>
+                    <div className="flex gap-4">
+                      <div className="glow-dot" />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-base" style={{ color: 'var(--text-primary)' }}>
+                          <a
+                            href="https://github.com/skanenje/system-monitor"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="accent-link inline-flex items-center gap-1"
+                          >
                             System Monitor
-                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                            <ExternalLink className="h-3.5 w-3.5" />
                           </a>
                         </h3>
-                        <p className="mt-2 text-sm leading-normal">A comprehensive system monitoring application providing real-time insights into system resources, processes, and network statistics with an ImGui-based interface.</p>
-                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">C++</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">ImGui</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">OpenGL</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">SDL2</div>
-                          </li>
-                        </ul>
+                        <p className="text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
+                          A comprehensive system monitoring application providing real-time insights into system
+                          resources, processes, and network statistics with an ImGui-based interface.
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {['C++', 'ImGui', 'OpenGL', 'SDL2'].map(t => <Tag key={t} label={t} />)}
+                        </div>
                       </div>
                     </div>
-                  </li>
+                  </Card>
+                </li>
 
-                  <li className="mb-12">
-                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                      <div className="z-10 sm:col-span-6">
-                        <h3 className="font-medium leading-snug text-slate-200">
-                          <a href="https://github.com/skanenje/prompt-enhancer" target="_blank" rel="noreferrer" className="inline-flex items-center font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base">
+                {/* Prompt Enhancer */}
+                <li>
+                  <Card>
+                    <div className="flex gap-4">
+                      <div className="glow-dot" />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-base" style={{ color: 'var(--text-primary)' }}>
+                          <a
+                            href="https://github.com/skanenje/prompt-enhancer"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="accent-link inline-flex items-center gap-1"
+                          >
                             Prompt Enhancer
-                            <ExternalLink className="ml-1 h-4 w-4 shrink-0" />
+                            <ExternalLink className="h-3.5 w-3.5" />
                           </a>
                         </h3>
-                        <p className="mt-2 text-sm leading-normal">enhance your prompt to get intelligent output from ai chatbots</p>
-                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Python</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">GenAi</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Gemini</div>
-                          </li>
-                          <li className="mr-1.5 mt-2">
-                            <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Docker</div>
-                          </li>
-                        </ul>
+                        <p className="text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
+                          Enhance your prompt to get intelligent output from AI chatbots. Leverages Gemini API to
+                          restructure and elevate prompt quality before sending to downstream models.
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {['Python', 'GenAI', 'Gemini', 'Docker'].map(t => <Tag key={t} label={t} />)}
+                        </div>
                       </div>
                     </div>
-                  </li>
-                </ul>
-              </div>
+                  </Card>
+                </li>
+              </ul>
             </section>
 
-            {/* Contact Section */}
-            <section id="contact" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36">
-              <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Contact</h2>
+            {/* ── CONTACT ───────────────────────────────────────── */}
+            <section id="contact" className="mb-20 scroll-mt-16">
+              <div className="section-header">
+                <h2 className="section-title">Contact</h2>
               </div>
-              
-              <div className="rounded-lg border border-slate-700/50 p-6 hover:border-slate-700 transition">
-                <h3 className="text-lg font-semibold text-slate-200 mb-6">
-                  Wish to Collaborate? Feel free to get in touch 😉...
+              <Card>
+                <h3 className="font-semibold text-lg mb-6" style={{ color: 'var(--text-primary)' }}>
+                  Wish to Collaborate? Feel free to get in touch 😉
                 </h3>
-                
-                <div className="flex flex-col space-y-6">
-                  <a
-                    href="https://github.com/skanenje"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-slate-400 hover:text-teal-300 transition"
-                  >
-                    <Github className="w-6 h-6 mr-3" />
-                    github.com/skanenje
+                <div>
+                  <a href="https://github.com/skanenje" target="_blank" rel="noopener noreferrer" className="contact-link">
+                    <Github className="h-5 w-5" />
+                    <span className="text-sm">github.com/skanenje</span>
                   </a>
-                  <a
-                    href="mailto:swapomuse@gmail.com"
-                    className="flex items-center text-slate-400 hover:text-teal-300 transition"
-                  >
-                    <Mail className="w-6 h-6 mr-3" />
-                    swapomuse@gmail.com
+                  <a href="mailto:swapomuse@gmail.com" className="contact-link">
+                    <Mail className="h-5 w-5" />
+                    <span className="text-sm">swapomuse@gmail.com</span>
                   </a>
-                  <a
-                    href="https://www.linkedin.com/in/swabri-musa-565350291/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-slate-400 hover:text-teal-300 transition"
-                  >
-                    <Linkedin className="w-6 h-6 mr-3" />
-                    linkedin.com/in/swabri-musa
+                  <a href="https://www.linkedin.com/in/swabri-musa-565350291/" target="_blank" rel="noopener noreferrer" className="contact-link">
+                    <Linkedin className="h-5 w-5" />
+                    <span className="text-sm">linkedin.com/in/swabri-musa</span>
                   </a>
-                  <a
-                    href="https://dev.to/skanenje"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-slate-400 hover:text-teal-300 transition"
-                  >
-                    <Code2 className="w-6 h-6 mr-3" />
-                    dev.to/skanenje
+                  <a href="https://dev.to/skanenje" target="_blank" rel="noopener noreferrer" className="contact-link">
+                    <Code2 className="h-5 w-5" />
+                    <span className="text-sm">dev.to/skanenje</span>
                   </a>
-                  <a
-                    href="tel:+254723975141"
-                    className="flex items-center text-slate-400 hover:text-teal-300 transition"
-                  >
-                    <Phone className="w-6 h-6 mr-3" />
-                    +254723975141
+                  <a href="tel:+254723975141" className="contact-link">
+                    <Phone className="h-5 w-5" />
+                    <span className="text-sm">+254 723 975 141</span>
                   </a>
                 </div>
-              </div>
+              </Card>
             </section>
 
-            {/* Footer */}
-            <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
+            {/* ── FOOTER ────────────────────────────────────────── */}
+            <footer className="pb-16 text-xs sm:pb-0" style={{ color: 'var(--text-muted)' }}>
               <p>
                 Built with{' '}
-                <a href="https://nextjs.org" className="font-medium text-slate-400 hover:text-teal-300" target="_blank" rel="noreferrer">
+                <a href="https://nextjs.org" target="_blank" rel="noreferrer" className="accent-link" style={{ color: 'var(--text-secondary)' }}>
                   Next.js
                 </a>
                 {' '}and{' '}
-                <a href="https://tailwindcss.com" className="font-medium text-slate-400 hover:text-teal-300" target="_blank" rel="noreferrer">
+                <a href="https://tailwindcss.com" target="_blank" rel="noreferrer" className="accent-link" style={{ color: 'var(--text-secondary)' }}>
                   Tailwind CSS
                 </a>
                 . Deployed on{' '}
-                <a href="https://vercel.com/" className="font-medium text-slate-400 hover:text-teal-300" target="_blank" rel="noreferrer">
+                <a href="https://vercel.com/" target="_blank" rel="noreferrer" className="accent-link" style={{ color: 'var(--text-secondary)' }}>
                   Vercel
                 </a>
                 .
@@ -582,6 +447,6 @@ export default function Home() {
           </main>
         </div>
       </div>
-    </div>
+    </>
   );
 }
