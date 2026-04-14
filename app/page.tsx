@@ -75,7 +75,7 @@ export default function Home() {
                 Python Developer
               </h2>
               <p className="mt-4 max-w-xs leading-normal">
-                I build/Intregrate Applications with AI/ Agents using Python, Go and modern Frameworks.
+                Machine  learning and Data Scientist.
               </p>
               <nav className="nav hidden lg:block" aria-label="In-page jump links">
                 <ul className="mt-16 w-max">
@@ -179,17 +179,24 @@ export default function Home() {
               </div>
                     <div>
                     <div>
-                        <p className="mb-4">
-                          I’m an AI and Machine Learning developer focused on building intelligent, agent-driven systems. My work centers on designing Retrieval-Augmented Generation pipelines, model context protocols, and multi-agent architectures capable of reasoning, tool use, and autonomous task execution. I approach AI from first principles—understanding embeddings, indexing, context management, and model constraints to create reliable and extensible systems.
-                        </p>
-
-                        <p className="mb-4">
-                          My programming background spans Go, Python, JavaScript and Rust which helps me bridge classical software design with modern ML workflows. I’m particularly interested in how to make AI based systems efficient, vector databases, concurrency models, and state synchronization map onto agentic AI patterns such as retrieval, planning, tool execution, and memory systems.
-                        </p>
-
-                        <p className="mb-4">
-                          I work iteratively—prototype, validate, refine—using AI not only as a development accelerator but as a research companion. Recent projects include agentic RAG pipelines, mcp , embedded/IoT data processing, and the integration of AI with real-world systems across IoT and Web2 domains.
-                        </p>
+                    <p className="mb-4">
+                        I'm a developer with a focus on AI and machine learning, particularly in building
+                        systems that combine language models with structured retrieval, tool use, and
+                        multi-step reasoning. I try to understand what's actually happening under the
+                        hood—how embeddings work, how context windows constrain design, how retrieval
+                        quality affects outputs—rather than treating models as black boxes.
+                      </p>
+                      <p className="mb-4">
+                        My programming background spans Python, Go, JavaScript, and some Rust. This mix
+                        has been useful for connecting ML workflows with backend systems—handling
+                        concurrency, state, and data pipelines in ways that hold up beyond a prototype.
+                      </p>
+                      <p className="mb-4">
+                        I work iteratively: build something small, test it against real inputs, then
+                        refine. Recent projects include RAG pipelines, MCP-based tool integrations,
+                        and connecting AI components to IoT and web systems. I'm still learning a lot,
+                        but I'm deliberate about understanding the tradeoffs in what I build.
+                      </p>
                       </div>
                     </div>
             </section>
