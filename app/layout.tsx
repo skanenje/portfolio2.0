@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/portfolio-svgrepo-com.svg',
-        type: 'image/svg+xml',
+        url: '/suitcase.png',
+        type: 'image/png',
       },
     ],
   },
