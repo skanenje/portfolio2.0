@@ -144,24 +144,26 @@ export default function Home() {
                 <h2 className="section-title">About</h2>
               </div>
               <div className="space-y-4 text-sm leading-relaxed fade-up-2" style={{ color: 'var(--text-secondary)' }}>
-                <p>
-                  I&apos;m a developer with a focus on AI and machine learning, particularly in building
-                  systems that combine language models with structured retrieval, tool use, and
-                  multi-step reasoning. I try to understand what&apos;s actually happening under the
-                  hood—how embeddings work, how context windows constrain design, how retrieval
-                  quality affects outputs—rather than treating models as black boxes.
-                </p>
-                <p>
-                  My programming background spans Python, Go, JavaScript, and some Rust. This mix
-                  has been useful for connecting ML workflows with backend systems—handling
-                  concurrency, state, and data pipelines in ways that hold up beyond a prototype.
-                </p>
-                <p>
-                  I work iteratively: build something small, test it against real inputs, then
-                  refine. Recent projects include RAG pipelines, MCP-based tool integrations,
-                  and connecting AI components to IoT and web systems. I&apos;m still learning a lot,
-                  but I&apos;m deliberate about understanding the tradeoffs in what I build.
-                </p>
+                  <p>
+                    I build applied ML systems and backend software — end-to-end, not just prototypes.
+                    Recent work includes a document intelligence pipeline covering classification across
+                    ~3,000 files, structured extraction from clinical records, and a rejection predictor
+                    trained on claims data. Separately, I&apos;ve built an energy audit tool with a billing
+                    engine and ROI modeling, an NLP news pipeline with topic classification, and
+                    LLM-integrated applications using RAG and MCP-based tool use.
+                  </p>
+                  <p>
+                    My programming background spans Python, Go, JavaScript, and some Rust. Python handles
+                    most of the ML work — model training, SHAP explainability, Streamlit dashboards. Go
+                    is where I reach for concurrent backend systems and APIs. The mix lets me connect
+                    model outputs to real infrastructure rather than stopping at a notebook.
+                  </p>
+                  <p>
+                    I work iteratively and I&apos;m still deepening my ML fundamentals — currently building
+                    up from bias-variance tradeoffs and loss functions rather than just reaching for
+                    libraries. I care about understanding tradeoffs, not just shipping something that
+                    runs.
+                  </p>
               </div>
             </section>
 
