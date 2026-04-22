@@ -155,7 +155,7 @@ export default function Home() {
                   <p>
                     My programming background spans Python, Go, JavaScript, and some Rust. Python handles
                     most of the ML work — model training, SHAP explainability, Streamlit dashboards. Go
-                    is where I reach for concurrent backend systems and APIs. The mix lets me connect
+                    is where I reach for concurrent backend systems and APIs and Javascript for web interfaces and Fullstack applications. The mix lets me connect
                     model outputs to real infrastructure rather than stopping at a notebook.
                   </p>
                   <p>
